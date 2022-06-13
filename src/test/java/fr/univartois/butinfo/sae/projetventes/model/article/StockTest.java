@@ -8,9 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import fr.univartois.butinfo.sae.projetventes.model.article.Article;
-import fr.univartois.butinfo.sae.projetventes.model.article.Stock;
-
 @ExtendWith(MockitoExtension.class)
 class StockTest {
 	
