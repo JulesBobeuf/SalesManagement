@@ -33,6 +33,7 @@ public class ClientEntreprise extends Client {
 	 * Son numéro de référence est généré automatiquement.
 	 */
 	public ClientEntreprise() {
+		super();
 	}
 
 	/**
