@@ -47,7 +47,6 @@ class ClientEntrepriseTest{
 		assertThat(ce1.getContact()).isEqualTo("Bleu");
 	}
 	
-	
 
 }
 
