@@ -1,18 +1,26 @@
 package fr.univartois.butinfo.sae.projetventes.model.gestionvehicule;
 
 public class Voiture extends Vehicule {
-    private Commercial commerciaux;
+    private Commercial commercial;
+
+
+    public Voiture(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation, Commercial commercial) {
+		super(modele, immatriculation, marque, nbKm, anneeMiseEnCirculation);
+		this.commercial=commercial;
+	}
+    
+    public Voiture(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation) {
+		super(modele, immatriculation, marque, nbKm, anneeMiseEnCirculation);
+		this.commercial=null;
+	}
 
     public Commercial getCommercial() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.commerciaux;
+        return this.commercial;
     }
 
-    public Voiture() {
-    }
-
-    public String toString() {
-		return null;
-    }
+	public String toString() {
+		String res = super.toString();
+		return res + "Commercial : " + commercial.toString() + "\n";
+	}
 
 }

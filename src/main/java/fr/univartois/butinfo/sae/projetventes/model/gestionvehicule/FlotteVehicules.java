@@ -1,13 +1,21 @@
 package fr.univartois.butinfo.sae.projetventes.model.gestionvehicule;
 
-import java.util.List;
+import java.util.LinkedList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class FlotteVehicules {
-    private List<Vehicule> vehicules;
+    private ObservableList<Vehicule> vehicules;
 
     private int nbVehicules;
+    
+    public FlotteVehicules() {
+    	vehicules =  FXCollections.observableList(new LinkedList<>());
+    	nbVehicules=0;
+    }
 
-  public List<Vehicule> getVehicules() {
+    public ObservableList<Vehicule> getVehicules() {
         // Automatically generated method. Please delete this comment before entering specific code.
         return this.vehicules;
     }
@@ -20,9 +28,6 @@ public class FlotteVehicules {
     public void setNbVehicules(int value) {
         // Automatically generated method. Please delete this comment before entering specific code.
         this.nbVehicules = value;
-    }
-
-    public FlotteVehicules() {
     }
 
     public void ajouteVehicule(String v) {
