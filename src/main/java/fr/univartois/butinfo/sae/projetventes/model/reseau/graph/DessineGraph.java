@@ -51,12 +51,12 @@ public class DessineGraph {
 
         Graph g = construireGraph(reseau);
         
-        tournee = new RandomTourTSP<reseau.getPoints(),reseau.getRoutes()>;
         
+        Graph tournee = new RandomTourTSP<reseau.getPoints(),reseau.getRoutes()>;
         
-         tournee2 = new HeldKarpTSP<V,​E>;
+        Graph tournee2 = new HeldKarpTSP<V,​E>;
         
-        
+        visualisationGraphe(tournee);
         visualisationGraphe(tournee2);
         
         
