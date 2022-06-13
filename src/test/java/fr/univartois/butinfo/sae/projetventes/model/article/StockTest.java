@@ -1,4 +1,4 @@
-package fr.univartois.butinfo.sae.projetventes;
+package fr.univartois.butinfo.sae.projetventes.model.article;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
