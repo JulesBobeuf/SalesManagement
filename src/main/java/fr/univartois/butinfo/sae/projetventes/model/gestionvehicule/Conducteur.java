@@ -1,5 +1,7 @@
 package fr.univartois.butinfo.sae.projetventes.model.gestionvehicule;
 
+import java.util.Objects;
+
 public abstract class Conducteur {
     private String nom;
 
@@ -9,38 +11,55 @@ public abstract class Conducteur {
 
     private TypeDePermis typePermis;
 
+    
+    public Conducteur(String nom, String prenom, String numPermis, TypeDePermis typePermis) {
+    	this.nom=nom;
+    	this.prenom=prenom;
+    	this.numPermis=numPermis;
+    	this.typePermis=typePermis;
+    }
+    
+    
     public String getNom() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.nom;
     }
 
     public String getPrenom() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.prenom;
     }
 
     public String getNumPermis() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.numPermis;
     }
 
     public TypeDePermis getTypePermis() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.typePermis;
     }
 
     public void setTypePermis(TypeDePermis value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
         this.typePermis = value;
     }
-    public boolean equals(Object o) {
-		return false;
-    }
+    
+    
 
-    public Conducteur() {
-    }
-    public String toString() {
-    return null;
+    @Override
+	public int hashCode() {
+		return Objects.hash(nom, prenom);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Conducteur)) {
+			return false;
+		}
+		Conducteur other = (Conducteur) obj;
+		return Objects.equals(nom, other.nom) && Objects.equals(prenom, other.prenom);
+	}
+
+
+	public String toString() {
+    	return "Nom : " + this.nom + "\n Prenom : " + this.prenom + "\n Numéro de permis :" + this.numPermis + "\n Type de permis : " + this.typePermis + "\n";
     }
 
 }

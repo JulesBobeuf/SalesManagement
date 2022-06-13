@@ -5,33 +5,43 @@ public class Fourgon extends Vehicule {
 
     private double volumeMax;
 
-    private Livreur livreurs;
+    private Livreur livreur;
+    
+    public Fourgon(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation, double poidsMax, double volumeMax, Livreur livreur) {
+		super(modele, immatriculation, marque, nbKm, anneeMiseEnCirculation);
+		this.poidsMax = poidsMax;
+		this.volumeMax=volumeMax;
+		this.livreur = livreur;
+		
+	}
+    
+    public Fourgon(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation, double poidsMax, double volumeMax) {
+		super(modele, immatriculation, marque, nbKm, anneeMiseEnCirculation);
+		this.poidsMax = poidsMax;
+		this.volumeMax=volumeMax;
+		this.livreur = null;
+		
+	}
 
-    public Livreur getLivreurs() {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        return this.livreurs;
+    public Livreur getLivreur() {
+        return this.livreur;
     }
 
-    public void setLivreurs(Livreur value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
-        this.livreurs = value;
+    public void setLivreur(Livreur value) {
+        this.livreur = value;
     }
 
     public double getPoidsMax() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.poidsMax;
     }
 
     public double getVolumeMax() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.volumeMax;
     }
 
-    public Fourgon() {
-    }
-
-    public String toString() {
-		return null;
+	public String toString() {
+		String res = super.toString();
+		return res + "Poids max : " + this.poidsMax + "\n Volume max : " + this.volumeMax + "\n + livreur :" + livreur.toString() + "\n";
     }
 
 }

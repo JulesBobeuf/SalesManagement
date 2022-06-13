@@ -9,43 +9,44 @@ public abstract class Vehicule {
 
     private double nbKm;
 
-    private int anneeMiseEnCirculation;
+    private final int anneeMiseEnCirculation;
+    
+    
 
-    public String getModele() {
-        // Automatically generated method. Please delete this comment before entering specific code.
+    public Vehicule(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation) {
+		this.modele = modele;
+		this.immatriculation = immatriculation;
+		this.marque = marque;
+		this.nbKm = nbKm;
+		this.anneeMiseEnCirculation = anneeMiseEnCirculation;
+	}
+
+	public String getModele() {
         return this.modele;
     }
 
     public String getImmatriculation() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.immatriculation;
     }
 
     public String getMarque() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.marque;
     }
 
     public double getNbKm() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.nbKm;
     }
 
     public void setNbKm(double value) {
-        // Automatically generated method. Please delete this comment before entering specific code.
         this.nbKm = value;
     }
 
     public int getAnneeMiseEnCirculation() {
-        // Automatically generated method. Please delete this comment before entering specific code.
         return this.anneeMiseEnCirculation;
     }
 
-    public Vehicule() {
-    }
-
     public String toString() {
-		return null;
+		return "Marque : " + this.marque + "\n Modele : " + this.modele + "\n Plaque d'immatriculation : " + this.immatriculation + " \n Kilometrage : +" + this.nbKm + "\n Année de mise en circulation : " + this.anneeMiseEnCirculation + "\n";
     }
 
 }
