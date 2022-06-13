@@ -1,5 +1,6 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
@@ -31,23 +32,20 @@ class ClientEntrepriseTest{
 	}
 
 	@Test
-	void testClientEntrepriseStringStringIntString() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	void testClientEntreprise() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	void testGetContact() {
-		fail("Not yet implemented");
+		assertThat(ce1.getContact()).isEqualTo("Un contact");
 	}
 
 	@Test
 	void testSetContact() {
-		fail("Not yet implemented");
+		ce1.setContact("Bleu");
+		assertThat(ce1.getContact()).isEqualTo("Bleu");
 	}
 
 }
+
