@@ -43,7 +43,7 @@ public abstract class Vehicule {
      * @param nbKm
      * @param anneeMiseEnCirculation
      */
-    public Vehicule(String modele, String immatriculation, String marque, double nbKm, int anneeMiseEnCirculation) {
+    public Vehicule(String marque, String immatriculation, String modele, double nbKm, int anneeMiseEnCirculation) {
 		this.modele = modele;
 		this.immatriculation = immatriculation;
 		this.marque = marque;
@@ -118,7 +118,7 @@ public abstract class Vehicule {
 	 * @return String
 	 */
 	public String toString() {
-		return "Marque : " + this.marque + "\n Modele : " + this.modele + "\n Plaque d'immatriculation : " + this.immatriculation + " \n Kilometrage : +" + this.nbKm + "\n Année de mise en circulation : " + this.anneeMiseEnCirculation + "\n";
+		return "Marque : " + this.marque + "\n Modele : " + this.modele + "\n Plaque d'immatriculation : " + this.immatriculation + " \n Kilometrage : " + this.nbKm + "\n Année de mise en circulation : " + this.anneeMiseEnCirculation + "\n";
     }
 
 }

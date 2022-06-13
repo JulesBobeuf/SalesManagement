@@ -61,13 +61,10 @@ public class FlotteVehicules {
       * @throws DejaPresentException
       */
     public void ajouteVehicule(Vehicule v) throws DejaPresentException {
-    	Iterator<Vehicule> iterator = vehicules.iterator();
-    	int count = 0;
-    	while (iterator.hasNext()) {
-    		if (vehicules.get(count).equals(v)) {
+    	for (int i=0;i<nbVehicules;i++) {
+    		if (vehicules.get(i).equals(v)) {
     			throw new DejaPresentException();
     		}
-    		count++;
     	}
     	vehicules.add(v);
     	nbVehicules++;
@@ -82,7 +79,9 @@ public class FlotteVehicules {
     	if (vehicules.remove(v)) {
     		return;
     	}
-    	throw new PasPresentException();
+    	else {
+    		throw new PasPresentException();
+    	}
     
     }
     
@@ -91,8 +90,9 @@ public class FlotteVehicules {
      */
     public void triType() {
     	Collections.sort(vehicules,new SortByTypeVehicule());
-    	for (int i=0;i<nbVehicules;i++) {
-    		System.out.println(vehicules.get(i).toString());
+    	Iterator<Vehicule> iterator = vehicules.iterator();
+    	while (iterator.hasNext()) {
+    		System.out.println(iterator.next().toString());
     	}
     }
     
