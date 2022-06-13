@@ -1,11 +1,12 @@
 package fr.univartois.butinfo.sae.projetventes.model.reseau.graph;
 
-import java.util.Iterator;
-
 import org.jgrapht.Graph;
 import org.jgrapht.Graphs;
-import org.jgrapht.graph.*;
-import org.jgrapht.traverse.DepthFirstIterator;
+import org.jgrapht.alg.tour.RandomTourTSP;
+import org.jgrapht.ext.JGraphXAdapter;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
 import fr.univartois.butinfo.sae.projetventes.model.reseau.Arete;
 import fr.univartois.butinfo.sae.projetventes.model.reseau.Point;
@@ -19,13 +20,45 @@ import fr.univartois.butinfo.sae.projetventes.model.reseau.ReseauRoutier;
  * Les classes {@code Point}, {@code Arete}, {@code RéseauRoutier} sont utilisées pour alimenter la librairie <a href="https://jgrapht.org/">{@link JGraphT}</a>.
  */
 public class DessineGraph {
-    public static void main(String[] args) {
-        // création d'une instance de la classe ReseauRoutier
-        ReseauRoutier reseau = new ReseauRoutier();
+	
+    public static Graph construireGraph(ReseauRoutier reseau) {
         // Lecture du fichier contenant la description du réseau routier
         reseau.lireCarte("reseau.txt");
 
-        reseau.construireGraph(reseau);
+        // Création d'une représentation du réseau routier sous la forme d'une classe de la librairie JGraphT
+        Graph<Point, DefaultWeightedEdge> g = new SimpleDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+
+        // Stockage des points et des arêtes du réseau routier dans le graphe de la librairie JGraphT.
+        for (Point p : reseau.getPoints())
+            g.addVertex(p);
+        for (Arete a : reseau.getRoutes()) {
+            // Ajout d'une arête : 2 points et une pondération
+            Graphs.addEdge(g,reseau.getPointById(a.getIdP1()), reseau.getPointById(a.getIdP2()), a.getPoids()) ;
+        }
+        
+        return g;
+
+    }
+    
+    public static void visualisationGraphe(Graph g) {
+    	JGraphXAdapter<String, DefaultEdge> graphAdapter = new JGraphXAdapter<String, DefaultEdge>(g);
+    }
+
+	
+    public static void main(String[] args) {
+    	// création d'une instance de la classe ReseauRoutier
+        ReseauRoutier reseau = new ReseauRoutier();
+
+        Graph g = construireGraph(reseau);
+        
+        tournee = new RandomTourTSP<reseau.getPoints(),reseau.getRoutes()>;
+        
+        
+         tournee2 = new HeldKarpTSP<V,​E>;
+        
+        
+        visualisationGraphe(tournee2);
+        
         
         // Parcours du graphe et affichage pour chaque point des points reliés par une arête
         Iterator<Point> iter = new DepthFirstIterator<>(g);
@@ -38,6 +71,10 @@ public class DessineGraph {
             }
             System.out.println(sb.toString());
         }
+        
+        
+        
+
     }
 }
 
