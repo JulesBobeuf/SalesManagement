@@ -25,17 +25,8 @@ public class DessineGraph {
         // Lecture du fichier contenant la description du réseau routier
         reseau.lireCarte("reseau.txt");
 
-        // Création d'une représentation du réseau routier sous la forme d'une classe de la librairie JGraphT
-        Graph<Point, DefaultWeightedEdge> g = new SimpleDirectedWeightedGraph<>(DefaultWeightedEdge.class);
-
-        // Stockage des points et des arêtes du réseau routier dans le graphe de la librairie JGraphT.
-        for (Point p : reseau.getPoints())
-            g.addVertex(p);
-        for (Arete a : reseau.getRoutes()) {
-            // Ajout d'une arête : 2 points et une pondération
-            Graphs.addEdge(g,reseau.getPointById(a.getIdP1()), reseau.getPointById(a.getIdP2()), a.getPoids()) ;
-        }
-
+        reseau.construireGraph(reseau);
+        
         // Parcours du graphe et affichage pour chaque point des points reliés par une arête
         Iterator<Point> iter = new DepthFirstIterator<>(g);
         while (iter.hasNext()) {

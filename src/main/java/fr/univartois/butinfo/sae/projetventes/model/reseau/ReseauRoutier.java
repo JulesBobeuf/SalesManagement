@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+import org.jgrapht.Graph;
+import org.jgrapht.Graphs;
+import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.SimpleDirectedWeightedGraph;
+
 /**
  * La classe implémente un graphe de points {@code Point} qui sont reliés par des arêtes {@code Arete}.
  *
@@ -95,6 +100,22 @@ public class ReseauRoutier {
      */
     public Point getPointById(int id) {
         return mapPoints.get(id);
+    }
+    
+    public Graph construireGraph(ReseauRoutier reseau) {
+        // Création d'une représentation du réseau routier sous la forme d'une classe de la librairie JGraphT
+        Graph<Point, DefaultWeightedEdge> g = new SimpleDirectedWeightedGraph<>(DefaultWeightedEdge.class);
+
+        // Stockage des points et des arêtes du réseau routier dans le graphe de la librairie JGraphT.
+        for (Point p : reseau.getPoints())
+            g.addVertex(p);
+        for (Arete a : reseau.getRoutes()) {
+            // Ajout d'une arête : 2 points et une pondération
+            Graphs.addEdge(g,reseau.getPointById(a.getIdP1()), reseau.getPointById(a.getIdP2()), a.getPoids()) ;
+        }
+        
+        return g;
+
     }
 
 }
