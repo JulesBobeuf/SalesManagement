@@ -1,0 +1,21 @@
+build
+bin
+.gradle
+.project
+.classpath
+.settings
+### Java template
+# Compiled class file
+*.class
+
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
