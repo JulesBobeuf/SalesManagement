@@ -8,9 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import fr.univartois.butinfo.sae.projetventes.model.article.Article;
-import fr.univartois.butinfo.sae.projetventes.model.article.Stock;
-
 @ExtendWith(MockitoExtension.class)
 class StockTest {
 	
@@ -77,7 +74,6 @@ class StockTest {
 		when(a2.getReference()).thenReturn(1);
 		assertThat(stock.rechercherArticleParReference(1)).isEqualTo(a2);
 	}
-
 
 	@Test
 	void testRechercherArticlesCategorie() {
