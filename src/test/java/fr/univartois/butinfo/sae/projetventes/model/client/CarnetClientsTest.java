@@ -1,7 +1,7 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,12 +40,11 @@ class CarnetClientsTest {
 		carnetCl.ajouterClient(new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme));
 		assertThat(carnetCl.estVide()).isEqualTo(false);
 	}
-
+	
 	@Test
 	void testAjouterClient() {
 		carnetCl.ajouterClient(new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme));
 		assertThat(carnetCl.getNbClients()).isEqualTo(1);
-		
 		for (int i = 0;i<carnetCl.MAX_CLIENTS;i++)
 			carnetCl.ajouterClient(new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme));
 		assertThat(carnetCl.getNbClients()).isEqualTo(carnetCl.MAX_CLIENTS);
@@ -53,9 +52,16 @@ class CarnetClientsTest {
 
 	@Test
 	void testSupprimerClient() {
-		carnetCl.ajouterClient(new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme));
-		carnetCl.supprimerClient();
+		Client client = new ClientParticulier("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER",Genre.Homme);
+		Client client2 = new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme);
+		carnetCl.ajouterClient(client);
+		carnetCl.ajouterClient(client2);
+		carnetCl.supprimerClient(client2);
+		assertThat(carnetCl.getNbClients()).isEqualTo(1);
+		carnetCl.supprimerClient(client2);
+		assertThat(carnetCl.getNbClients()).isEqualTo(1);
 	}
+
 
 	@Test
 	void testRechercherClientParReference() {
@@ -84,17 +90,18 @@ class CarnetClientsTest {
 
 	@Test
 	void testGetNom() {
-		fail("Not yet implemented");
+		assertThat(carnetCl.getNom()).isEqualTo("carnet1");
 	}
 
 	@Test
 	void testSetNom() {
-		fail("Not yet implemented");
+		carnetCl.setNom("autre");
+		assertThat(carnetCl.getNom()).isEqualTo("autre");
 	}
 
 	@Test
 	void testGetNbClients() {
-		fail("Not yet implemented");
+		assertThat(carnetCl.getNbClients()).isEqualTo(0);
 	}
 
 }
