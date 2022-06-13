@@ -28,7 +28,7 @@ class ClientEntrepriseTest{
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		assertThat(ce1.toString()).isEqualTo("Référence :\t\t"	+ ce1.getReference() + "\nNom :\t\t\t" + ce1.getNom() + "\nAdresse :\t\t" + ce1.getAdresse() + "\nPoints Fidélité :\t"+ ce1.getPointsFidelite()+ "\nRistourne (%) :\t\t"+ ce1.getRistourne()+ "\nContact :\t\t"+ ce1.getContact());
 	}
 
 	@Test
@@ -46,6 +46,8 @@ class ClientEntrepriseTest{
 		ce1.setContact("Bleu");
 		assertThat(ce1.getContact()).isEqualTo("Bleu");
 	}
+	
+	
 
 }
 
