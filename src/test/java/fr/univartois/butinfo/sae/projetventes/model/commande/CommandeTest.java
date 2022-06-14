@@ -3,17 +3,14 @@ package fr.univartois.butinfo.sae.projetventes.model.commande;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import fr.univartois.butinfo.sae.projetventes.model.article.Article;
 import fr.univartois.butinfo.sae.projetventes.model.client.Client;
-import fr.univartois.butinfo.sae.projetventes.model.client.ClientEntreprise;
 
 @ExtendWith(MockitoExtension.class)
 
@@ -133,16 +130,6 @@ class CommandeTest {
 		assertThat(commande1.getMontantAvecLivraison()).isEqualTo(0);
 	}
 
-
-	@Test
-	void testGetMontant() {
-		//when(article1.getQuantiteStock()).thenReturn(100);
-		//when(article1.getReference()).thenReturn(1);
-		//commande1.commander(article1,2);
-		//commande1.cloturer(true);
-		//commande1.cloturer(true);
-	}
-
 	@Test
 	void testCloturer() {
 		when(article1.getQuantiteStock()).thenReturn(100);
@@ -174,9 +161,9 @@ class CommandeTest {
 
 	@Test
 	void testToString() {
-		assertThat(commande1.toString()).isEqualTo("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(non clôturée)\n"+"Client\n"+client1+"\n"+"Articles commandés\n"+"but was:"+"----------------------------------------------------------------------------------------\n");
+		assertThat(commande1).hasToString("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(non clôturée)\n"+"Client\n"+client1+"\n"+"Articles commandés\n"+ "Montants\n" + "Montant sans livraison : " + commande1.getMontant()+" euros\n"+"Montant avec livraison : "+commande1.getMontantAvecLivraison()+" euros\n"+"----------------------------------------------------------------------------------------\n");
 		commande1.cloturer(true);
-		assertThat(commande1.toString()).isEqualTo("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(clôturée)\n");
+		assertThat(commande1).hasToString("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(clôturée)\n"+"Client\n"+client1+"\n"+"Articles commandés\n"+ "Montants\n" + "Montant sans livraison : " + commande1.getMontant()+" euros\n"+"Montant avec livraison : "+commande1.getMontantAvecLivraison()+" euros\n"+"----------------------------------------------------------------------------------------\n");
 	}
 
 }
