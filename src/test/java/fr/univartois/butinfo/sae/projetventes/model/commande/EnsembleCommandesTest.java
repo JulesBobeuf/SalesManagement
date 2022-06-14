@@ -64,8 +64,10 @@ class EnsembleCommandesTest {
 		ensembleCommandes.ajouterCommande(commande3);
 		when(commande2.getReference()).thenReturn(2);
 		when(commande2.estCloturee()).thenReturn(true);
+		when(commande3.estCloturee()).thenReturn(false);
 		assertThat(ensembleCommandes.supprimerCommande(4141)).isFalse();
 		assertThat(ensembleCommandes.supprimerCommande(commande2.getReference())).isTrue();
+		assertThat(ensembleCommandes.supprimerCommande(commande3.getReference())).isFalse();
 	}
 
 	@Test
@@ -82,5 +84,4 @@ class EnsembleCommandesTest {
 		Commande[] tab = ensembleCommandes.getCommandes();
 		assertThat(tab).hasSize(2);
 	}
-
 }
