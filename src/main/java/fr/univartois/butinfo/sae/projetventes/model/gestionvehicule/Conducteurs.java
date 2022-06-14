@@ -2,9 +2,6 @@ package fr.univartois.butinfo.sae.projetventes.model.gestionvehicule;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-
-import fr.univartois.butinfo.sae.projetventes.model.client.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

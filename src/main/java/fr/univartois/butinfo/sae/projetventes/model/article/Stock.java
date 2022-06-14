@@ -1,5 +1,6 @@
 package fr.univartois.butinfo.sae.projetventes.model.article;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javafx.collections.FXCollections;
@@ -25,11 +26,6 @@ public class Stock {
 	private ObservableList<Article> articles;
 	
 	/**
-	 * Le nombre d'articles dans le stock. Les articles sont toujours placés en début du tableau articles.
-	 */
-	private int nbArticles;
-
-	/**
 	 * Le nom du stock.
 	 */
 	private String nom;
@@ -41,8 +37,7 @@ public class Stock {
 	 */
 	public Stock(String nom) {
 		this.nom=nom;
-		articles = FXCollections.observableList(new LinkedList<Article>());
-		nbArticles=0;
+		articles = FXCollections.observableList(new ArrayList<Article>());
 	}
 	
 	/**
@@ -50,14 +45,14 @@ public class Stock {
 	 * @return true si et seulement si le stock est plein.
 	 */
 	public boolean estPlein() {
-		return nbArticles==MAX_ARTICLES;
+		return articles.size()==MAX_ARTICLES;
 	}
 	/**
 	 * Méthode testant si le stock est vide (il n'y a aucun article dans le stock, i.e. nbArticles vaut 0).
 	 * @return true si et seulement si le stock est vide.
 	 */
 	public boolean estVide() {
-		return nbArticles==0;
+		return articles.size()==0;
 	}
 	
 	/**
@@ -66,7 +61,7 @@ public class Stock {
 	 * @return L'indice où se trouve cet article dans le tableau articles. Dans le cas où l'article n'est pas présent -1 est retourné.
 	 */
 	private int chercherIndiceArticle(Article article) {
-		for (int i=0;i<nbArticles;i++)
+		for (int i=0;i<articles.size();i++)
 			if (article.equals(articles.get(i)))
 				return i;
 		return -1;
@@ -102,7 +97,7 @@ public class Stock {
 	 * @return L'article dans le stock ayant refArticle comme référence ou null si un tel article n'existe pas.
 	 */
 	public Article rechercherArticleParReference(int refArticle) {
-		for (int i=0;i<nbArticles;i++)
+		for (int i=0;i<articles.size();i++)
 			if (articles.get(i).getReference()==refArticle)
 				return articles.get(i);
 		return null;
@@ -114,8 +109,8 @@ public class Stock {
 	 * @return Un nouveau tableau non null contenant les articles du stock.
 	 */
 	public Article[] articlesDansStock() {
-		Article[] tab=new Article[nbArticles];
-		for  (int i=0;i<nbArticles;i++)
+		Article[] tab=new Article[articles.size()];
+		for  (int i=0;i<articles.size();i++)
 			tab[i]=articles.get(i);
 		return tab;
 	}
@@ -130,12 +125,12 @@ public class Stock {
 	public Article[] rechercherArticlesCategorie(String categorie) {
 		int nb=0;
 		Article[] selection=null;
-		for (int i=0;i<nbArticles;i++)
+		for (int i=0;i<articles.size();i++)
 			if (articles.get(i).getCategorie().equals(categorie))
 				nb++;
 		selection=new Article[nb];
 		nb=0;
-		for (int i=0;i<nbArticles;i++)
+		for (int i=0;i<articles.size();i++)
 			if (articles.get(i).getCategorie().equals(categorie))
 				selection[nb++]=articles.get(i);
 		return selection;
@@ -163,7 +158,7 @@ public class Stock {
 	 * @return Le nombre d'articles du stock.
 	 */
 	public int getNbArticles() {
-		return nbArticles;
+		return articles.size();
 	}
 	
 	public ObservableList<Article> getArticles() {
