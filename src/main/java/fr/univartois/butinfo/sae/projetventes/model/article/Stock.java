@@ -1,5 +1,9 @@
 package fr.univartois.butinfo.sae.projetventes.model.article;
 
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * Un objet de la classe Stock correspond à un stock d'articles.
  * Chaque stock a un nom ("Stock 2022" par exemple) et permet de gérer le stock d'un ensemble d'articles.
@@ -17,7 +21,7 @@ public class Stock {
 	/**
 	 * Les articles se trouvant dans le stock. Il sera initialisé avec un tableau pouvant contenir MAX_ARTICLES articles.
 	 */
-	private Article[] articles;
+	private ObservableList<Article> articles;
 	
 	/**
 	 * Le nombre d'articles dans le stock. Les articles sont toujours placés en début du tableau articles.
@@ -36,7 +40,7 @@ public class Stock {
 	 */
 	public Stock(String nom) {
 		this.nom=nom;
-		articles=new Article[MAX_ARTICLES];
+		articles = FXCollections.observableList(new ArrayList<Article>());
 		nbArticles=0;
 	}
 	
@@ -62,7 +66,7 @@ public class Stock {
 	 */
 	private int chercherIndiceArticle(Article article) {
 		for (int i=0;i<nbArticles;i++)
-			if (article.equals(articles[i]))
+			if (article.equals(articles.get(i)))
 				return i;
 		return -1;
 	}
@@ -76,7 +80,7 @@ public class Stock {
 	public void ajouterArticle(Article article) {
 		if ((estPlein())||(chercherIndiceArticle(article)!=-1))
 			return;
-		articles[nbArticles++]=article;
+		articles.add(article);
 	}
 	
 	/**
@@ -88,9 +92,7 @@ public class Stock {
 		int indice=chercherIndiceArticle(article);
 		if (indice==-1)
 			return;
-		articles[indice]=articles[nbArticles-1];
-		articles[nbArticles-1]=null;
-		nbArticles--;
+		articles.remove(indice);
 	}
 	
 	/**
@@ -100,8 +102,8 @@ public class Stock {
 	 */
 	public Article rechercherArticleParReference(int refArticle) {
 		for (int i=0;i<nbArticles;i++)
-			if (articles[i].getReference()==refArticle)
-				return articles[i];
+			if (articles.get(i).getReference()==refArticle)
+				return articles.get(i);
 		return null;
 	}
 
@@ -113,7 +115,7 @@ public class Stock {
 	public Article[] articlesDansStock() {
 		Article[] tab=new Article[nbArticles];
 		for  (int i=0;i<nbArticles;i++)
-			tab[i]=articles[i];
+			tab[i]=articles.get(i);
 		return tab;
 	}
 	
@@ -128,13 +130,13 @@ public class Stock {
 		int nb=0;
 		Article[] selection=null;
 		for (int i=0;i<nbArticles;i++)
-			if (articles[i].getCategorie().equals(categorie))
+			if (articles.get(i).getCategorie().equals(categorie))
 				nb++;
 		selection=new Article[nb];
 		nb=0;
 		for (int i=0;i<nbArticles;i++)
-			if (articles[i].getCategorie().equals(categorie))
-				selection[nb++]=articles[i];
+			if (articles.get(i).getCategorie().equals(categorie))
+				selection[nb++]=articles.get(i);
 		return selection;
 	}
 	
