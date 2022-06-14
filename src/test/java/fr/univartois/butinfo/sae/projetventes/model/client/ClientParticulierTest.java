@@ -8,31 +8,34 @@ import org.junit.jupiter.api.Test;
 class ClientParticulierTest{
 
 	private ClientParticulier cli;
+	private ClientParticulier autreCli;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		cli = new ClientParticulier("Hong San Fu","10 Rue du Chien Mangé",69,"Chang", Genre.Homme);
+		autreCli = new ClientParticulier("Han","11 Rue du Chien Mangé",69,"Ching", Genre.Femme);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		cli = null;
+		autreCli = null;
 	}
 
 	@Test
-	void testGetNom() {
+	void testConstructeur() {
+		assertThat(cli).isInstanceOf(Client.class);
+		assertThat(cli).isInstanceOf(ClientParticulier.class);
 		assertThat(cli.getNom()).isEqualTo("Hong San Fu");
+		assertThat(cli.getPrenom()).isEqualTo("Chang");
+		assertThat(cli.getGenre()).isEqualTo(Genre.Homme);
+		assertThat(cli.getPointsFidelite()).isEqualTo(69);
 	}
 	
 	@Test
 	void testSetNom() {
-		cli.setPrenom("Paire");
-		assertThat(cli.getPrenom()).isEqualTo("Paire");
-	}
-	
-	@Test
-	void testGetPrenom() {
-		assertThat(cli.getPrenom()).isEqualTo("Chang");
+		cli.setNom("Paire");
+		assertThat(cli.getNom()).isEqualTo("Paire");
 	}
 	
 	@Test
@@ -40,12 +43,13 @@ class ClientParticulierTest{
 		cli.setPrenom("Benoit");
 		assertThat(cli.getPrenom()).isEqualTo("Benoit");
 	}
-	
-	@Test
-	void testGetGenre() {
-		assertThat(cli.getGenre()).isEqualTo(Genre.Homme);
-	}
 
+	@Test
+	void testSetAdresse() {
+		cli.setAdresse("Ici");
+		assertThat(cli.getAdresse()).isEqualTo("Ici");
+	}
+	
 	@Test
 	void testSetGenre() {
 		cli.setGenre(Genre.Femme);
@@ -53,8 +57,30 @@ class ClientParticulierTest{
 	}
 	
 	@Test
-	void testToString() {
-		assertThat(cli.toString()).isEqualTo("Référence :\t\t"	+ cli.getReference() + "\nNom :\t\t\t" + cli.getNom() + "\nAdresse :\t\t" + cli.getAdresse() + "\nPoints Fidélité :\t"+ cli.getPointsFidelite()+ "\nRistourne (%) :\t\t"+ cli.getRistourne() + "\nPrénom :\t\t"+ cli.getPrenom()+"\nGenre :\t\t\t"+cli.getGenre());
+	void testSetPointsFidelite() {
+		cli.setPointsFidelite(10);
+		assertThat(cli.getPointsFidelite()).isEqualTo(10);
 	}
 	
+	@Test
+	void testGetRistourne() {
+		assertThat(cli.getRistourne()).isZero();
+		cli.setPointsFidelite(101);
+		assertThat(cli.getRistourne()).isEqualTo(5);
+		cli.setPointsFidelite(500);
+		assertThat(cli.getRistourne()).isEqualTo(10);
+		cli.setPointsFidelite(1000);
+		assertThat(cli.getRistourne()).isEqualTo(15);
+	}
+	
+	@Test
+	void testToString() {
+		assertThat(cli).hasToString("Référence :\t\t"	+ cli.getReference() + "\nNom :\t\t\t" + cli.getNom() + "\nAdresse :\t\t" + cli.getAdresse() + "\nPoints Fidélité :\t"+ cli.getPointsFidelite()+ "\nRistourne (%) :\t\t"+ cli.getRistourne() + "\nPrénom :\t\t"+ cli.getPrenom()+"\nGenre :\t\t\t"+cli.getGenre());
+	}
+	
+	@Test
+	void testEquals() {
+		assertThat(cli.equals(cli)).isTrue();
+		assertThat(cli.equals(autreCli)).isFalse();
+	}
 }
