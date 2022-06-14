@@ -1,4 +1,4 @@
-package fr.univartois.butinfo.sae.projetventes.model.client;
+       package fr.univartois.butinfo.sae.projetventes.model.client;
 
 import fr.univartois.butinfo.sae.projetventes.model.util.Util;
 
@@ -33,7 +33,6 @@ public class ClientEntreprise extends Client {
 	 * Son numéro de référence est généré automatiquement.
 	 */
 	public ClientEntreprise() {
-		super();
 	}
 
 	/**
