@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
 class CarnetClientsTest {
 	private CarnetClients carnetCl;
 	
@@ -26,7 +25,7 @@ class CarnetClientsTest {
 	@Test
 	void testCarnetClients() {
 		assertThat(carnetCl.getNom()).isEqualTo("carnet1");
-		assertThat(carnetCl.getNbClients()).isEqualTo(0);
+		assertThat(carnetCl.getNbClients()).isZero();
 	}
 
 	@Test
@@ -68,27 +67,54 @@ class CarnetClientsTest {
 
 	@Test
 	void testRechercherClientParReference() {
+		Client client = new ClientParticulier("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER",Genre.Homme);
+		carnetCl.ajouterClient(client);
+		Client recherche = carnetCl.rechercherClientParReference(client.getReference());
+		assertThat(client).isEqualTo(recherche);
 		
+		Client existePas = carnetCl.rechercherClientParReference(15151);
+		assertThat(existePas).isNull();
 	}
 
 	@Test
 	void testClientsDansCarnet() {
-		fail("Not yet implemented");
+		Client client = new ClientParticulier("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER",Genre.Homme);
+		Client client2 = new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme);
+		carnetCl.ajouterClient(client);
+		carnetCl.ajouterClient(client2);
+		carnetCl.clientsDansCarnet();
 	}
 
 	@Test
 	void testClientsParticulierDansCarnet() {
-		fail("Not yet implemented");
+		Client client = new ClientParticulier("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER",Genre.Homme);
+		carnetCl.ajouterClient(client);
+		Client[] tab = carnetCl.clientsParticulierDansCarnet();
+		assertThat(tab).hasSize(1);
 	}
 
 	@Test
 	void testClientsEntrepriseDansCarnet() {
-		fail("Not yet implemented");
+		Client client = new ClientEntreprise("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER");
+		carnetCl.ajouterClient(client);
+		Client[] tab = carnetCl.clientsEntrepriseDansCarnet();
+		assertThat(tab).hasSize(1);
+
 	}
 
 	@Test
 	void testRechercherClientsParMotCle() {
-		fail("Not yet implemented");
+		Client client = new ClientEntreprise("UN","20 rue des Tulipes, 62000 Lens, France",0,"SUPER");
+		Client client2 = new ClientParticulier("Cure","30 rue des Tulipes, 62000 Lens, France",0,"Hector",Genre.Homme);
+		carnetCl.ajouterClient(client);
+		carnetCl.ajouterClient(client2);
+		Client[] tab1 = carnetCl.rechercherClientsParMotCle("Tulipes");
+		Client[] tab2 = carnetCl.rechercherClientsParMotCle("Cure");
+		Client[] tab3 = carnetCl.rechercherClientsParMotCle("existePas");
+		assertThat(tab1).hasSize(2);
+		assertThat(tab2).hasSize(1);
+		assertThat(tab3).isEmpty();
+		
 	}
 
 	@Test
@@ -104,7 +130,7 @@ class CarnetClientsTest {
 
 	@Test
 	void testGetNbClients() {
-		assertThat(carnetCl.getNbClients()).isEqualTo(0);
+		assertThat(carnetCl.getNbClients()).isZero();
 	}
 
 }
