@@ -94,42 +94,89 @@ class CommandeTest {
 
 	@Test
 	void testEstCloturee() {
-		fail("Not yet implemented");
+		assertFalse(commande1.estCloturee());
+		commande1.cloturer(true);
+		assertTrue(commande1.estCloturee());
 	}
 
 	@Test
 	void testSupprimerLigneCommande() {
-		fail("Not yet implemented");
+		commande1.supprimerLigneCommande(1);
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		commande1.commander(article1,2);
+		commande1.supprimerLigneCommande(1);
+		commande1.cloturer(true);
+		commande1.supprimerLigneCommande(1);
 	}
 
 	@Test
 	void testCommander() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetNbLignesCommande() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		when(article2.getQuantiteStock()).thenReturn(100);
+		when(article2.getReference()).thenReturn(2);
+		when(article3.getQuantiteStock()).thenReturn(100);
+		when(article3.getReference()).thenReturn(3);
+		when(article4.getQuantiteStock()).thenReturn(100);
+		when(article4.getReference()).thenReturn(4);
+		when(article5.getQuantiteStock()).thenReturn(100);
+		when(article5.getReference()).thenReturn(5);
+		when(article6.getQuantiteStock()).thenReturn(100);
+		when(article6.getReference()).thenReturn(6);
+		when(article7.getQuantiteStock()).thenReturn(100);
+		when(article7.getReference()).thenReturn(7);
+		when(article8.getQuantiteStock()).thenReturn(100);
+		when(article8.getReference()).thenReturn(8);
+		when(article9.getQuantiteStock()).thenReturn(100);
+		when(article9.getReference()).thenReturn(9);
+		when(article10.getQuantiteStock()).thenReturn(100);
+		when(article10.getReference()).thenReturn(10);
+		when(article11.getQuantiteStock()).thenReturn(100);
+		when(article11.getReference()).thenReturn(11);
+		when(article12.getQuantiteStock()).thenReturn(0);
+		when(article12.getReference()).thenReturn(12);
+		assertFalse(commande1.commander(article5,0));
+		assertFalse(commande1.commander(article12,2));
+		assertFalse(commande1.commander(article12,2));
+		commande1.cloturer(true);
+		assertFalse(commande1.commander(article1,2));
 	}
 
 	@Test
 	void testGetReference() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		assertThat(commande1.getReference()).isEqualTo(6);
 	}
 
 	@Test
 	void testGetMontantAvecLivraison() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		when(article2.getQuantiteStock()).thenReturn(100);
+		when(article2.getReference()).thenReturn(2);
+		commande1.commander(article1,2);
+		commande1.commander(article2,2);
+		assertThat(commande1.getMontantAvecLivraison()).isEqualTo(0);
 	}
 
 	@Test
 	void testGetMontant() {
-		fail("Not yet implemented");
+		//when(article1.getQuantiteStock()).thenReturn(100);
+		//when(article1.getReference()).thenReturn(1);
+		//commande1.commander(article1,2);
+		//commande1.cloturer(true);
+		//commande1.cloturer(true);
 	}
 
 	@Test
 	void testCloturer() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		commande1.commander(article1,2);
+		commande1.cloturer(false);
+		commande1.cloturer(true);
 	}
 
 	@Test
