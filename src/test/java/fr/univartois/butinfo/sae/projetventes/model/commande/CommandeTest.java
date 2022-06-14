@@ -112,32 +112,6 @@ class CommandeTest {
 
 	@Test
 	void testCommander() {
-		when(article1.getQuantiteStock()).thenReturn(100);
-		when(article1.getReference()).thenReturn(1);
-		when(article2.getQuantiteStock()).thenReturn(100);
-		when(article2.getReference()).thenReturn(2);
-		when(article3.getQuantiteStock()).thenReturn(100);
-		when(article3.getReference()).thenReturn(3);
-		when(article4.getQuantiteStock()).thenReturn(100);
-		when(article4.getReference()).thenReturn(4);
-		when(article5.getQuantiteStock()).thenReturn(100);
-		when(article5.getReference()).thenReturn(5);
-		when(article6.getQuantiteStock()).thenReturn(100);
-		when(article6.getReference()).thenReturn(6);
-		when(article7.getQuantiteStock()).thenReturn(100);
-		when(article7.getReference()).thenReturn(7);
-		when(article8.getQuantiteStock()).thenReturn(100);
-		when(article8.getReference()).thenReturn(8);
-		when(article9.getQuantiteStock()).thenReturn(100);
-		when(article9.getReference()).thenReturn(9);
-		when(article10.getQuantiteStock()).thenReturn(100);
-		when(article10.getReference()).thenReturn(10);
-		when(article11.getQuantiteStock()).thenReturn(100);
-		when(article11.getReference()).thenReturn(11);
-		when(article12.getQuantiteStock()).thenReturn(0);
-		when(article12.getReference()).thenReturn(12);
-		assertFalse(commande1.commander(article5,0));
-		assertFalse(commande1.commander(article12,2));
 		assertFalse(commande1.commander(article12,2));
 		commande1.cloturer(true);
 		assertFalse(commande1.commander(article1,2));
@@ -145,8 +119,6 @@ class CommandeTest {
 
 	@Test
 	void testGetReference() {
-		when(article1.getQuantiteStock()).thenReturn(100);
-		when(article1.getReference()).thenReturn(1);
 		assertThat(commande1.getReference()).isEqualTo(6);
 	}
 
@@ -160,6 +132,7 @@ class CommandeTest {
 		commande1.commander(article2,2);
 		assertThat(commande1.getMontantAvecLivraison()).isEqualTo(0);
 	}
+
 
 	@Test
 	void testGetMontant() {
@@ -181,17 +154,29 @@ class CommandeTest {
 
 	@Test
 	void testGetArticle() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		commande1.commander(article1,2);
+		assertThat(commande1.getArticle(1)).isEqualTo(null);
+		assertThat(commande1.getArticle(-5)).isEqualTo(null);
+		assertThat(commande1.getArticle(0)).isEqualTo(article1);
 	}
 
 	@Test
 	void testGetQuantite() {
-		fail("Not yet implemented");
+		when(article1.getQuantiteStock()).thenReturn(100);
+		when(article1.getReference()).thenReturn(1);
+		commande1.commander(article1,2);
+		assertThat(commande1.getQuantite(1)).isEqualTo(0);
+		assertThat(commande1.getQuantite(-5)).isEqualTo(0);
+		assertThat(commande1.getQuantite(0)).isEqualTo(2);
 	}
 
 	@Test
 	void testToString() {
-		fail("Not yet implemented");
+		assertThat(commande1.toString()).isEqualTo("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(non clôturée)\n"+"Client\n"+client1+"\n"+"Articles commandés\n"+"but was:"+"----------------------------------------------------------------------------------------\n");
+		commande1.cloturer(true);
+		assertThat(commande1.toString()).isEqualTo("----------------------------------------------------------------------------------------\n"+"Numéro de commande : "+commande1.getReference()+" "+"(clôturée)\n");
 	}
 
 }
