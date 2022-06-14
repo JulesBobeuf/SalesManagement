@@ -21,9 +21,9 @@ targetCompatibility = '17'
 // Le nom de la classe contenant la méthode "main".
 // Notez que le paquetage complet doit être spécifié.
 application {
-    mainClass = 'principal.GestionVentes'
+    mainClass = 'fr.univartois.butinfo.sae.projetventes.application.CarnetClientApplication'
 }
-
+/*
 dependencies {
 	implementation 'org.jgrapht:jgrapht-jdk1.5:0.7.3'
 	implementation 'org.jgrapht:jgrapht-core:1.5.1'
@@ -38,6 +38,7 @@ dependencies {
 	testImplementation 'org.mockito:mockito-junit-jupiter:4.6.1'
 	testImplementation 'org.objenesis:objenesis:3.2'
 	}
+	*/
 // La version de JavaFX utilisée dans le projet, et les composants requis.
 javafx {
     version = '17.0.2'

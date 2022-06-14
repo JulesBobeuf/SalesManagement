@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import fr.univartois.butinfo.sae.projetventes.model.article.Article;
 import fr.univartois.butinfo.sae.projetventes.model.client.Client;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * Un objet de la classe Commande correspond à une commande d'articles.
@@ -36,7 +38,7 @@ public class Commande {
 	/**
 	 * Les lignes de commande se trouvant dans la commande.
 	 */
-	private ArrayList<LigneCommande> lignesCommande;
+	private ObservableList<LigneCommande> lignesCommande;
 
 	/**
 	 * Le client pour qui est effectué la commande.
@@ -54,7 +56,7 @@ public class Commande {
 	 * @param client Le client associé à la commande.
 	 */
 	public Commande(Client client) {
-		lignesCommande=new ArrayList<LigneCommande>();
+		lignesCommande=FXCollections.observableList(new ArrayList<LigneCommande>());
 		reference=nbCommandes++;
 		cloturee=false;
 		this.client=client;
@@ -216,6 +218,14 @@ public class Commande {
 		if ((numLigneCommande<0)||(numLigneCommande>=getNbLignesCommande()))
 			return null;
 		return lignesCommande.get(numLigneCommande).getArticle();
+	}
+	
+	/**
+	 * Getter pour lignesCommande
+	 * @return lignesCommande
+	 */
+	public ObservableList<LigneCommande> getLignesCommande(){
+		return lignesCommande;
 	}
 	
 	/**

@@ -1,4 +1,10 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
+
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * Un objet de la classe CarnetClients correspond à un carnet de clients.
  * Chaque carnet de clients a un nom ("Carnet Clients 2022" par exemple) et permet de gérer un ensemble de clients.
@@ -15,7 +21,7 @@ public class CarnetClients {
 	/**
 	 * Les clients se trouvant dans le carnet. Il sera initialisé avec un tableau pouvant contenir MAX_CLIENTS clients.
 	 */
-	private Client[] clients;
+	private ObservableList<Client> clients;
 	
 	/**
 	 * Le nombre de clients dans le carnet. Les clients sont toujours placés en début du tableau clients.
@@ -34,7 +40,7 @@ public class CarnetClients {
 	 */
 	public CarnetClients(String nom) {
 		this.nom=nom;
-		clients=new Client[MAX_CLIENTS];
+		clients=FXCollections.observableList(new ArrayList<Client>());
 		nbClients=0;
 	}
 	
@@ -60,7 +66,7 @@ public class CarnetClients {
 	 */
 	private int chercherIndiceClient(Client client) {
 		for (int i=0;i<nbClients;i++)
-			if (client.equals(clients[i]))
+			if (client.equals(clients.get(i)))
 				return i;
 		return -1;
 	}
@@ -74,7 +80,8 @@ public class CarnetClients {
 	public void ajouterClient(Client client) {
 		if ((estPlein())||(chercherIndiceClient(client)!=-1))
 			return;
-		clients[nbClients++]=client;
+		clients.add(client);
+		nbClients++;
 	}
 	
 	/**
@@ -84,10 +91,10 @@ public class CarnetClients {
 	 */
 	public void supprimerClient(Client client) {
 		int indice=chercherIndiceClient(client);
+		System.out.println(indice);
 		if (indice==-1)
 			return;
-		clients[indice]=clients[nbClients-1];
-		clients[nbClients-1]=null;
+		clients.remove(indice);
 		nbClients--;
 	}
 	
@@ -98,8 +105,8 @@ public class CarnetClients {
 	 */
 	public Client rechercherClientParReference(int refClient) {
 		for (int i=0;i<nbClients;i++)
-			if (clients[i].getReference()==refClient)
-				return clients[i];
+			if (clients.get(i).getReference()==refClient)
+				return clients.get(i);
 		return null;
 	}
 
@@ -111,7 +118,7 @@ public class CarnetClients {
 	public Client[] clientsDansCarnet() {
 		Client[] tab=new Client[nbClients];
 		for  (int i=0;i<nbClients;i++)
-			tab[i]=clients[i];
+			tab[i]=clients.get(i);
 		return tab;
 	}
 	
@@ -123,13 +130,13 @@ public class CarnetClients {
 		int nb=0;
 		Client[] selection=null;
 		for (int i=0;i<nbClients;i++)
-			if (clients[i] instanceof ClientParticulier)
+			if (clients.get(i) instanceof ClientParticulier)
 				nb++;
 		selection=new Client[nb];
 		nb=0;
 		for (int i=0;i<nbClients;i++)
-			if (clients[i] instanceof ClientParticulier)
-				selection[nb++]=clients[i];
+			if (clients.get(i) instanceof ClientParticulier)
+				selection[nb++]=clients.get(i);
 		return selection;
 	}
 	
@@ -141,13 +148,13 @@ public class CarnetClients {
 		int nb=0;
 		Client[] selection=null;
 		for (int i=0;i<nbClients;i++)
-			if (clients[i] instanceof ClientEntreprise)
+			if (clients.get(i) instanceof ClientEntreprise)
 				nb++;
 		selection=new Client[nb];
 		nb=0;
 		for (int i=0;i<nbClients;i++)
-			if (clients[i] instanceof ClientEntreprise)
-				selection[nb++]=clients[i];
+			if (clients.get(i) instanceof ClientEntreprise)
+				selection[nb++]=clients.get(i);
 		return selection;
 	}
 	
@@ -164,13 +171,13 @@ public class CarnetClients {
 		int nb=0;
 		Client[] selection=null;
 		for (int i=0;i<nbClients;i++)
-			if ((clients[i].getAdresse().contains(motCle))||(clients[i].getNom().contains(motCle)))
+			if ((clients.get(i).getAdresse().contains(motCle))||(clients.get(i).getNom().contains(motCle)))
 				nb++;
 		selection=new Client[nb];
 		nb=0;
 		for (int i=0;i<nbClients;i++)
-			if ((clients[i].getAdresse().contains(motCle))||(clients[i].getNom().contains(motCle)))
-				selection[nb++]=clients[i];
+			if ((clients.get(i).getAdresse().contains(motCle))||(clients.get(i).getNom().contains(motCle)))
+				selection[nb++]=clients.get(i);
 		return selection;
 	}
 	
@@ -197,6 +204,14 @@ public class CarnetClients {
 	 */
 	public int getNbClients() {
 		return nbClients;
+	}
+	
+	/**
+	 * getter pour la listes de clients
+	 * @return clients
+	 */
+	public ObservableList<Client> getClients(){
+		return clients;
 	}
 	
 	

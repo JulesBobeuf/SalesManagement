@@ -203,6 +203,12 @@ public class Article {
 	 * @param article Un objet supposé être instance de la classe Article et non null.
 	 */
 	public boolean equals(Object article) {
+		if (article==null) {
+			return false;
+		}
+		if (!(article instanceof Article)) {
+			return false;
+		}
 		return ((Article)article).reference==reference;
 	}
 

@@ -1,6 +1,7 @@
 package fr.univartois.butinfo.sae.projetventes.model.article;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -40,7 +41,7 @@ public class Stock {
 	 */
 	public Stock(String nom) {
 		this.nom=nom;
-		articles = FXCollections.observableList(new ArrayList<Article>());
+		articles = FXCollections.observableList(new LinkedList<Article>());
 		nbArticles=0;
 	}
 	
@@ -163,6 +164,10 @@ public class Stock {
 	 */
 	public int getNbArticles() {
 		return nbArticles;
+	}
+	
+	public ObservableList<Article> getArticles() {
+		return articles;
 	}
 	
 	

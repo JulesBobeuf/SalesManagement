@@ -2,6 +2,9 @@ package fr.univartois.butinfo.sae.projetventes.model.commande;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * Un objet de la classe EnsembleCommandes correspond à un ensemble de commandes.
  * Une nouvelle commande peut être créée et être insérée dans un ensemble de commandes.
@@ -20,13 +23,13 @@ public class EnsembleCommandes {
 	/**
 	 * Les commandes se trouvant dans l'ensemble de commandes.
 	 */
-	private ArrayList<Commande> commandes;
+	private ObservableList<Commande> commandes;
 	
 	/**
 	 * Constructeur permettant de construire un nouvel ensemble de commandes ne contenant aucune commande.
 	 */
 	public EnsembleCommandes() {
-		commandes=new ArrayList<Commande>();
+		commandes= FXCollections.observableList(new ArrayList<Commande>());
 	}
 
 	/**
@@ -57,7 +60,13 @@ public class EnsembleCommandes {
 				return commandes.get(i);
 		return null;
 	}
-
+	/**
+	 * Getter pour la commande
+	 * @return commandes
+	 */
+	public ObservableList<Commande> getCommande(){
+		return commandes;
+	}
 	/**
 	 * Méthode permettant de supprimer une commande de l'ensemble de commandes correspondant à un numéro de référence.
 	 * Si la commande avec ce numéro de référence n'est pas dans l'ensemble rien est fait et false est retourné.

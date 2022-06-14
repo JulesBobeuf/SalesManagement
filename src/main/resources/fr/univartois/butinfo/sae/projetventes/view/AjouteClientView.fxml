@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.projetventes.controller.AjouteClientController">
+   <children>
+      <Button layoutX="269.0" layoutY="317.0" mnemonicParsing="false" onAction="#valider" prefHeight="37.0" prefWidth="62.0" text="Valider" />
+      <TextField fx:id="nom" layoutX="225.0" layoutY="50.0" text="Nom" />
+      <RadioButton fx:id="particulier" layoutX="27.0" layoutY="49.0" mnemonicParsing="false" onAction="#onParticulier" prefHeight="26.0" prefWidth="75.0" text="Particulier" />
+      <RadioButton fx:id="entreprise" layoutX="27.0" layoutY="76.0" mnemonicParsing="false" onAction="#onEntreprise" prefHeight="26.0" prefWidth="75.0" text="Entreprise" />
+      <TextField fx:id="prenom" layoutX="226.0" layoutY="89.0" text="Prenom" />
+      <TextField fx:id="adresse" layoutX="225.0" layoutY="131.0" text="Adresse" />
+      <ComboBox fx:id="genre" layoutX="224.0" layoutY="259.0" prefWidth="150.0" promptText="Genre" />
+   </children>
+</AnchorPane>

@@ -1,5 +1,6 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
 
+import fr.univartois.butinfo.sae.projetventes.model.article.Article;
 import fr.univartois.butinfo.sae.projetventes.model.util.Util;
 
 /**
@@ -155,6 +156,12 @@ abstract public class Client {
 	 */
 	@Override
 	public boolean equals(Object client) {
+		if (client==null) {
+			return false;
+		}
+		if (!(client instanceof Client)) {
+			return false;
+		}
 		return ((Client)client).reference==reference;
 	}
 
