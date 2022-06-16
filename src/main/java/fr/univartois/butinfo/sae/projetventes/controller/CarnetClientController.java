@@ -61,6 +61,10 @@ public class CarnetClientController implements ICarnetClient {
 
 	private Stage stage;
 	
+	private AjouteClientController controller;
+	
+	private Client tmp;
+	
 	
 	@Override
 	public void setCarnetClients(CarnetClients carnet) {
@@ -76,7 +80,7 @@ public class CarnetClientController implements ICarnetClient {
 			points.setText(Integer.toString(n.getPointsFidelite()));
 			ristourne.setText(Integer.toString(n.getRistourne()));
 			if (n instanceof ClientParticulier) {
-				genre.setDisable(false);
+				genre.setVisible(true);
 				ClientParticulier m = (ClientParticulier)n;
 				prenom.setText(m.getPrenom());
 				genre.setText(m.getGenre().toString());
@@ -84,7 +88,7 @@ public class CarnetClientController implements ICarnetClient {
 			else if (n instanceof ClientEntreprise) {
 				ClientEntreprise m = (ClientEntreprise)n;
 				prenom.setText(m.getContact());
-				genre.setDisable(true);
+				genre.setVisible(false);
 			}
 				
 		});
@@ -116,6 +120,10 @@ public class CarnetClientController implements ICarnetClient {
 		controller.setClients(carnet); 
 		
 	}
+	
+	public void modifierClient() {
+		controller.updateClient(tmp);
+	}
 
 	@Override
 	public void supprimerClient() {
@@ -124,8 +132,18 @@ public class CarnetClientController implements ICarnetClient {
 	}
 
 	@Override
-	public void editerClient() {
-		
+	public void editerClient() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AjouteClientView.fxml"));
+		Parent viewContent = fxmlLoader.load();
+		Scene scene = new Scene(viewContent);
+		stage.setScene(scene);
+		this.controller = fxmlLoader.getController();
+		controller.setControl(this);
+		controller.setScene(this.scene);
+		controller.setStage(stage);
+		controller.setClients(carnet);
+		this.tmp = listview.getSelectionModel().getSelectedItem();
+		controller.edit(tmp);
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -35,17 +36,27 @@ public class AjouteClientController {
     @FXML
     private RadioButton particulier;
     
-    private Scene scene;
-    
-    private Stage stage;
+    @FXML
+    private Button validerAjout;
+
+    @FXML
+    private Button validerEdit;
     
     @FXML
     private ComboBox<Genre> genre;
     
-    CarnetClients clients;
+    private Scene scene;
+    
+    private Stage stage;
+    
+    private CarnetClients clients;
+    
+    private CarnetClientController control;
     
     public void setClients(CarnetClients clients) {
     	this.clients=clients;
+    	validerAjout.setVisible(true);
+    	validerEdit.setVisible(false);
     }
     
     public void setScene(Scene scene) {
@@ -75,14 +86,63 @@ public class AjouteClientController {
     }
     
     public void onEntreprise() {
-    	genre.setDisable(true);
+    	genre.setVisible(false);
     	prenom.setText("Contact");
     	particulier.setSelected(false);
     }
     
     public void onParticulier() {
-    	genre.setDisable(false);
+    	genre.setVisible(true);
     	prenom.setText("Prénom");
     	entreprise.setSelected(false);
+    }
+    
+    public void edit(Client client) {
+    	validerAjout.setVisible(false);
+    	validerEdit.setVisible(true);
+    	entreprise.setVisible(false);
+    	particulier.setVisible(false);
+    	nom.setText(client.getNom());
+    	adresse.setText(client.getAdresse());
+    	if (client instanceof ClientParticulier) {
+    		ClientParticulier c = (ClientParticulier)client;
+    		genre.setDisable(false);
+    		prenom.setText(c.getPrenom());
+    		genre.setValue(c.getGenre());
+    	}
+    	else if (client instanceof ClientEntreprise) {
+    		ClientEntreprise c = (ClientEntreprise)client;
+    		prenom.setText(c.getContact());
+    		genre.setDisable(true);
+    	}
+    }
+    
+    public void retour() {
+    	changeScene();
+    }
+    
+    public void validerEdit() {
+    	control.modifierClient();
+    }
+    
+    public void updateClient(Client c) {
+    	clients.supprimerClient(c);
+    	c.setNom(nom.getText());
+    	c.setAdresse(adresse.getText());
+    	if (c instanceof ClientParticulier) {
+    		ClientParticulier d = (ClientParticulier)c;
+    		d.setPrenom(prenom.getText());
+    		d.setGenre(genre.getValue());
+    	}
+    	else if (c instanceof ClientEntreprise) {
+    		ClientEntreprise d = (ClientEntreprise)c;
+    		d.setContact(prenom.getText());
+    	}
+    	clients.ajouterClient(c);
+    	changeScene();
+    }
+    
+    public void setControl(CarnetClientController control) {
+    	this.control=control;
     }
 }

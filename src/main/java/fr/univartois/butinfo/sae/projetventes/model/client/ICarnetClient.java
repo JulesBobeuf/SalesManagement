@@ -11,7 +11,7 @@ public interface ICarnetClient {
 	
 	public void supprimerClient();
 	
-	public void editerClient();
+	public void editerClient() throws IOException;
 	
 	public void setScene(Scene scene);
 	

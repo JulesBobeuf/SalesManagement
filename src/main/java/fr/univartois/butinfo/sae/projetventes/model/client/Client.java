@@ -1,6 +1,5 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
 
-import fr.univartois.butinfo.sae.projetventes.model.article.Article;
 import fr.univartois.butinfo.sae.projetventes.model.util.Util;
 
 /**
