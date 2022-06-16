@@ -21,11 +21,17 @@ public class Conducteurs {
 	private int nbConducteurs;
 
 	/**
+	 * Nom de la liste de conducteurs
+	 */
+	private String nom;
+	
+	/**
 	 * Constructeur sans paramêtre, initie une instande de Conducteurs.
 	 */
-	public Conducteurs() {
+	public Conducteurs(String nom) {
 		conducteurs = FXCollections.observableList(new ArrayList<>());
 		nbConducteurs=0;
+		this.nom=nom;
 	}
 
 	/**
@@ -41,6 +47,7 @@ public class Conducteurs {
 	public int getNbConducteurs() {
 		return this.nbConducteurs;
 	}
+	
 
 	/**
 	 * Setter pour la valeur du nombre de conducteurs présent dans la liste.

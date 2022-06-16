@@ -32,7 +32,7 @@ public abstract class Vehicule {
     /**
      * Entier contenant l'année de mise en circulation du véhicule.
      */
-    private final int anneeMiseEnCirculation;
+    private int anneeMiseEnCirculation;
     
     
     /**
@@ -73,16 +73,42 @@ public abstract class Vehicule {
     public String getMarque() {
         return this.marque;
     }
+    
+    public void setAnneeMiseEnCirculation(int anneeC) {
+    	this.anneeMiseEnCirculation=anneeC;
+    }
 	
     /**
      * Getteur pour le kilométrage du véhicule
      * @return nbKm
      */
-    double getNbKm() {
+    public double getNbKm() {
         return this.nbKm;
     }
     
     /**
+     * setter pour le modele
+     * @param modele
+     */
+    public void setModele(String modele) {
+		this.modele = modele;
+	}
+    
+    /**
+     * setter pour la plaque d'immatriculation
+     * @param immatriculation
+     */
+	public void setImmatriculation(String immatriculation) {
+		this.immatriculation = immatriculation;
+	}
+	/**
+	 * setter pour la marque
+	 * @param marque
+	 */
+	public void setMarque(String marque) {
+		this.marque = marque;
+	}
+	/**
      * Setter pour le kilométrage du véhicule
      * @param value
      */

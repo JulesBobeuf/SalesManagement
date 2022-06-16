@@ -25,7 +25,10 @@ public class Voiture extends Vehicule {
 		super(marque, immatriculation, modele, nbKm, anneeMiseEnCirculation);
 		this.commercial=commercial;
 	}
-    /**
+    public void setCommercial(Commercial commercial) {
+		this.commercial = commercial;
+	}
+	/**
      * Constructeur sans commercial
      * @param modele
      * @param immatriculation

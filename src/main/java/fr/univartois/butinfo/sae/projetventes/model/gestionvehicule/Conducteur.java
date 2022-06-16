@@ -44,12 +44,38 @@ public abstract class Conducteur {
     }
     
     /**
+     * Setter pour le nom
+     * @param nom
+     */
+    public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+    /**
+     * Setter pour le prénom
+     * @param prenom
+     */
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	/**
+	 * Setter du numéro de permis
+	 * @param numPermis
+	 */
+	public void setNumPermis(String numPermis) {
+		this.numPermis = numPermis;
+	}
+
+
+	/**
      * Getter pour le nom
      * @return nom
      */
     public String getNom() {
         return this.nom;
     }
+    
     /**
      * Getter pour le prénom
      * @return prenom

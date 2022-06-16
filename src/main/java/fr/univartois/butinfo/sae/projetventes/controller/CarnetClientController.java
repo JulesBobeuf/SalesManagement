@@ -7,6 +7,7 @@ import fr.univartois.butinfo.sae.projetventes.model.client.ClientEntreprise;
 import fr.univartois.butinfo.sae.projetventes.model.client.ClientParticulier;
 import fr.univartois.butinfo.sae.projetventes.model.client.Genre;
 import fr.univartois.butinfo.sae.projetventes.model.client.ICarnetClient;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -70,8 +71,6 @@ public class CarnetClientController implements ICarnetClient {
 	public void setCarnetClients(CarnetClients carnet) {
 		this.carnet=carnet;
 		nomCarnet.setText(carnet.getNom());
-		carnet.ajouterClient(new ClientParticulier("Jakobowowowwoski","10 rue de la fosse",13,"Aime le ricar",Genre.Femme));
-		carnet.ajouterClient(new ClientEntreprise("Entreprise","14 rue de lail",14,"Aime la zqdk^dspj ricar"));
 		listview.setItems(carnet.getClients());
 		listview.getSelectionModel().selectedItemProperty().addListener((p,o,n) -> {
 			nom.setText(n.getNom());
@@ -105,6 +104,15 @@ public class CarnetClientController implements ICarnetClient {
     			}
     		};
     	});
+	}
+	
+	public void changeScene() {
+		stage.setScene(scene);
+	}
+
+	@FXML
+	public void retour(ActionEvent event) {
+		changeScene();
 	}
 
 

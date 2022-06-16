@@ -8,8 +8,8 @@ package fr.univartois.butinfo.sae.projetventes.model.gestionvehicule;
 public class TestGestionVehicules {
 
 	public static void main(String[] args) {
-		Conducteurs conducteurs = new Conducteurs();
-		FlotteVehicules vehicules = new FlotteVehicules();
+		Conducteurs conducteurs = new Conducteurs("Nom");
+		FlotteVehicules vehicules = new FlotteVehicules("Nom");
 		Conducteur c1 = new Livreur("Jean","Eude","95018360817",TypeDePermis.PERMIS_E,6200);
 		Livreur c2 = new Livreur("Jean","Jacques","950100160814",TypeDePermis.PERMIS_E,7200);
 		Livreur c3 = new Livreur("Jean","Arbre","11111902",TypeDePermis.PERMIS_E,6969);

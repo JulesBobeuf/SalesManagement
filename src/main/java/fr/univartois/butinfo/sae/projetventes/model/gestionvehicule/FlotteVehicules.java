@@ -26,11 +26,17 @@ public class FlotteVehicules {
     private int nbVehicules;
     
     /**
+     * Nom de la flotte de véhicules
+     */
+    private String nom;
+    
+    /**
      * Constructeur. Crée une nouvelle instance de Flotte véhicule
      */
-    public FlotteVehicules() {
+    public FlotteVehicules(String nom) {
     	vehicules =  FXCollections.observableList(new LinkedList<>());
     	nbVehicules=0;
+    	this.nom=nom;
     }
     
     /**
@@ -77,6 +83,7 @@ public class FlotteVehicules {
      */
     public void supprimeVehicule(Vehicule v) throws PasPresentException{
     	if (vehicules.remove(v)) {
+    		nbVehicules--;
     		return;
     	}
     	else {

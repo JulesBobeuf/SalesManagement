@@ -40,9 +40,9 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="boutonAdd" layoutX="55.0" layoutY="323.0" mnemonicParsing="false" onAction="#ajouterClient" prefHeight="39.0" prefWidth="78.0" text="Ajouter" />
-            <Button fx:id="boutonEdit" layoutX="155.0" layoutY="323.0" mnemonicParsing="false" onAction="#editerClient" prefHeight="39.0" prefWidth="78.0" text="Editer" />
-            <Button layoutX="261.0" layoutY="323.0" mnemonicParsing="false" onAction="#supprimerClient" prefHeight="39.0" prefWidth="78.0" text="Supprimer" />
+            <Button fx:id="boutonAdd" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#ajouterClient" prefHeight="39.0" prefWidth="78.0" text="Ajouter" />
+            <Button fx:id="boutonEdit" layoutX="14.0" layoutY="323.0" mnemonicParsing="false" onAction="#editerClient" prefHeight="39.0" prefWidth="78.0" text="Editer" />
+            <Button layoutX="155.0" layoutY="323.0" mnemonicParsing="false" onAction="#supprimerClient" prefHeight="39.0" prefWidth="78.0" text="Supprimer" />
             <Label fx:id="prenom" alignment="CENTER" layoutX="-1.0" layoutY="128.0" prefHeight="22.0" prefWidth="390.0" text="PRENOM">
                <font>
                   <Font size="15.0" />
@@ -58,6 +58,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <Button layoutX="289.0" layoutY="323.0" mnemonicParsing="false" onAction="#retour" prefHeight="39.0" prefWidth="78.0" text="Retour" />
          </children></AnchorPane>
   </items>
 </SplitPane>

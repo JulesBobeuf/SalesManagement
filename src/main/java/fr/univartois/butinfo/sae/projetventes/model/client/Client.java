@@ -1,5 +1,7 @@
 package fr.univartois.butinfo.sae.projetventes.model.client;
 
+import java.util.Objects;
+
 import fr.univartois.butinfo.sae.projetventes.model.util.Util;
 
 /**
@@ -153,16 +155,8 @@ abstract public class Client {
 	 * deux clients sont les mêmes si et seulement ils ont la même référence.
 	 * @param client Un objet supposé être instance de la classe Article et non null.
 	 */
-	@Override
-	public boolean equals(Object client) {
-		if (client==null) {
-			return false;
-		}
-		if (!(client instanceof Client)) {
-			return false;
-		}
-		return ((Client)client).reference==reference;
-	}
+	
+	
 
 	/**
 	 * Méthode permettant d'afficher les clients d'un tableau de clients.
@@ -176,7 +170,19 @@ abstract public class Client {
 		}
 			
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Client)) {
+			return false;
+		}
+		Client other = (Client) obj;
+		return reference == other.reference;
+	}
+
 	/**
 	 * Méthode permettant de trier un tableau de clients selon l'ordre alphabétique des noms des clients.
 	 * @param clients Le tableau de clients à trier.

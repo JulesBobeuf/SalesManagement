@@ -21,7 +21,7 @@ targetCompatibility = '17'
 // Le nom de la classe contenant la méthode "main".
 // Notez que le paquetage complet doit être spécifié.
 application {
-    mainClass = 'fr.univartois.butinfo.sae.projetventes.application.CarnetClientApplication'
+    mainClass = 'fr.univartois.butinfo.sae.projetventes.application.GestionVentesApplication'
 }
 /*
 dependencies {

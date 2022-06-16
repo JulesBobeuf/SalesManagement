@@ -13,10 +13,14 @@ public interface ICarnetClient {
 	
 	public void editerClient() throws IOException;
 	
+	public void modifierClient();
+	
 	public void setScene(Scene scene);
 	
 	public void setCarnetClients(CarnetClients carnet);
 	
 	public void setStage(Stage stage);
+	
+	public void changeScene();
 
 }

@@ -89,7 +89,13 @@ public class Fourgon extends Vehicule {
         return this.volumeMax;
     }
     
-    /**
+    public void setPoidsMax(double poidsMax) {
+		this.poidsMax = poidsMax;
+	}
+	public void setVolumeMax(double volumeMax) {
+		this.volumeMax = volumeMax;
+	}
+	/**
      * toString
      * @return String
      */

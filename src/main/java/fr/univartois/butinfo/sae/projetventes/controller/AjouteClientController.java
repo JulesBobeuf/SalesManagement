@@ -105,15 +105,17 @@ public class AjouteClientController {
     	nom.setText(client.getNom());
     	adresse.setText(client.getAdresse());
     	if (client instanceof ClientParticulier) {
+    		prenom.setPromptText("Prénom");
     		ClientParticulier c = (ClientParticulier)client;
-    		genre.setDisable(false);
+    		genre.setVisible(true);
     		prenom.setText(c.getPrenom());
     		genre.setValue(c.getGenre());
     	}
     	else if (client instanceof ClientEntreprise) {
+    		prenom.setPromptText("Contact");
     		ClientEntreprise c = (ClientEntreprise)client;
     		prenom.setText(c.getContact());
-    		genre.setDisable(true);
+    		genre.setVisible(false);
     	}
     }
     
