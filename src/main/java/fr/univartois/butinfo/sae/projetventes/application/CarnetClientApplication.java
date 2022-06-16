@@ -2,8 +2,8 @@ package fr.univartois.butinfo.sae.projetventes.application;
 
 import java.io.IOException;
 
-import fr.univartois.butinfo.sae.projetventes.model.client.CarnetClients;
-import fr.univartois.butinfo.sae.projetventes.model.client.ICarnetClient;
+import fr.univartois.butinfo.sae.projetventes.model.article.IStock;
+import fr.univartois.butinfo.sae.projetventes.model.article.Stock;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +19,7 @@ public class CarnetClientApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Il faut d'abord récupérer la description de la vue (au format FXML).
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/CarnetClientView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/StockView.fxml"));
         Parent viewContent = fxmlLoader.load();
 
         // Ensuite, on la place dans une Scene...
@@ -27,14 +27,14 @@ public class CarnetClientApplication extends Application {
         // que l'on place elle-même dans la fenêtre.
         stage.setScene(scene);
         
-        ICarnetClient controller = fxmlLoader.getController();
-        CarnetClients carnet = new CarnetClients("Nékléo");
-        controller.setCarnetClients(carnet);
+        IStock controller = fxmlLoader.getController();
+        Stock stock = new Stock("MON STOCK");
+        controller.setStock(stock);
         controller.setScene(scene);
         controller.setStage(stage);
 
         // On peut ensuite donner un titre à la fenêtre.
-        stage.setTitle("Carnet de clients");
+        stage.setTitle("Un stock");
 
         // Enfin, on affiche la fenêtre.
         stage.show();
