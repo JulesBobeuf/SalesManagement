@@ -34,5 +34,14 @@
 	<classpathentry kind="lib" path="lib/mockito-core-4.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/mockito-junit-jupiter-4.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/objenesis-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-core-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-demo-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-ext-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-guava-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-io-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-jdk1.6-0.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-opt-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgrapht-unimi-dsi-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jgraphx-4.1.0.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
