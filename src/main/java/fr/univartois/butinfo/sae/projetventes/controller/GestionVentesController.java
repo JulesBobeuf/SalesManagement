@@ -2,6 +2,7 @@ package fr.univartois.butinfo.sae.projetventes.controller;
 
 import java.io.IOException;
 
+import fr.univartois.butinfo.sae.projetventes.model.article.IStock;
 import fr.univartois.butinfo.sae.projetventes.model.article.Stock;
 import fr.univartois.butinfo.sae.projetventes.model.client.CarnetClients;
 import fr.univartois.butinfo.sae.projetventes.model.client.ICarnetClient;
@@ -40,7 +41,8 @@ public class GestionVentesController implements IGestionVentes {
     	stage.setScene(scene);
         stage.setTitle("Carnet de clients");
         controller.setCarnetClients(carnet);
-        controller.setScene(scene);
+        controller.setScene(this.scene);
+        controller.setScene2(scene);
         controller.setStage(stage);
     }
 
@@ -53,13 +55,24 @@ public class GestionVentesController implements IGestionVentes {
     	stage.setScene(scene);
         stage.setTitle("Liste des conducteurs");
         controller.setConducteurs(conducteurs);
-        controller.setScene(scene);
+        controller.setScene(this.scene);
+        controller.setScene2(scene);
         controller.setStage(stage);
 
     }
 
     @FXML
-    public void onStock(ActionEvent event) {
+    public void onStock(ActionEvent event) throws IOException {
+    	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/StockView.fxml"));
+		Parent viewContent = fxmlLoader.load();
+		Scene scene = new Scene(viewContent);
+    	IStock controller = fxmlLoader.getController();
+    	stage.setScene(scene);
+        stage.setTitle("Stock d'articles");
+        controller.setStock(stock);
+        controller.setScene(this.scene);
+        controller.setScene2(scene);
+        controller.setStage(stage);
     	
     }
 
@@ -72,7 +85,8 @@ public class GestionVentesController implements IGestionVentes {
     	stage.setScene(scene);
         stage.setTitle("Liste des véhicules");
         controller.setFlotteVehicules(flotteVehicules);
-        controller.setScene(scene);
+        controller.setScene(this.scene);
+        controller.setScene2(scene);
         controller.setStage(stage);
     }
     

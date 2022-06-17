@@ -51,6 +51,8 @@ public class ConducteursController implements IConducteurs {
 
 	private Conducteurs conducteurs;
 
+	private Scene scene2;
+
     @FXML
     public void ajouterConducteur() throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AjouteConducteurView.fxml"));
@@ -58,7 +60,7 @@ public class ConducteursController implements IConducteurs {
 		Scene scene = new Scene(viewContent);
 		stage.setScene(scene);
 		AjouteConducteurController controller = fxmlLoader.getController();
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setConducteurs(conducteurs); 
 		controller.init();
@@ -72,7 +74,7 @@ public class ConducteursController implements IConducteurs {
 		Scene scene = new Scene(viewContent);
 		stage.setScene(scene);
 		AjouteConducteurController controller = fxmlLoader.getController();
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setConducteurs(conducteurs);
 		controller.edit(listview.getSelectionModel().getSelectedItem());
@@ -100,11 +102,15 @@ public class ConducteursController implements IConducteurs {
     	this.scene=scene;
 
     }
+    
+	public void setScene2(Scene scene2) {
+		this.scene2=scene2;
+	}
 
     @Override
     public void setConducteurs(Conducteurs conducteurs) {
     	this.conducteurs=conducteurs;
-    	//nomConducteurs.setText("Ma liste de conducteurs");
+    	nomConducteurs.setText(conducteurs.getNom());
     	listview.setItems(conducteurs.getConducteurs());
     	listview.getSelectionModel().selectedItemProperty().addListener((p,o,n) -> {
     		nom.setText(n.getNom());

@@ -22,4 +22,6 @@ public void ajouterConducteur() throws IOException;
 	
 	public void changeScene();
 
+	public void setScene2(Scene scene);
+
 }

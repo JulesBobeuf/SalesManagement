@@ -23,7 +23,7 @@ public class ArticleCat1 extends Article {
 	 * @param quantiteStock La quantité initiale en stock de l'article (si strictement inférieure à 0 alors 0 est mis comme quantité).
 	 * @param capacite La capcité en litre des sacoches (si strictement inférieure à 0 alors 0 est mis).
 	 */
-	protected ArticleCat1(String designation, double prix, int quantiteStock,int capacite) {
+	public ArticleCat1(String designation, double prix, int quantiteStock,int capacite) {
 		super("Sacoches Vélo",designation,prix,quantiteStock);
 		setCapacite(capacite);
 	}

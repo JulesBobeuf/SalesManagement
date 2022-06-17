@@ -24,7 +24,7 @@ public class ArticleCat2 extends Article implements Livrable {
 	 * @param quantiteStock La quantité initiale en stock de l'article (si strictement inférieure à 0 alors 0 est mis comme quantité).
 	 * @param poids Le poids du vélo en kg (si strictement inférieur à 0.0 alors 15 est mis par défaut).
 	 */
-	protected ArticleCat2(String designation, double prix, int quantiteStock,double poids) {
+	public ArticleCat2(String designation, double prix, int quantiteStock,double poids) {
 		super("Vélos",designation,prix,quantiteStock);
 		setPoids(poids);
 	}

@@ -23,4 +23,6 @@ public interface ICarnetClient {
 	
 	public void changeScene();
 
+	public void setScene2(Scene scene);
+
 }

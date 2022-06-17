@@ -40,6 +40,21 @@ public class Conducteurs {
 	public ObservableList<Conducteur> getConducteurs() {
 		return this.conducteurs;
 	}
+	
+	/**
+	 * Getter du nom
+	 * @return nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+	/**
+	 * Setter du nom
+	 * @param nom
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 	/**
 	 * @return int

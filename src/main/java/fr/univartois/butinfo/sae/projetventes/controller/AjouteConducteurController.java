@@ -63,6 +63,7 @@ public class AjouteConducteurController {
 	private Conducteurs conducteurs;
     
 	private Conducteur tmp;
+	
     public void init() {
     	erreur.setVisible(false);
     	validerAjout.setVisible(true);

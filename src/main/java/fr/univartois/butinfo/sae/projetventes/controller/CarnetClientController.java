@@ -59,6 +59,8 @@ public class CarnetClientController implements ICarnetClient {
 	private CarnetClients carnet;
 
 	private Scene scene;
+	
+	private Scene scene2;
 
 	private Stage stage;
 	
@@ -123,7 +125,7 @@ public class CarnetClientController implements ICarnetClient {
 		Scene scene = new Scene(viewContent);
 		stage.setScene(scene);
 		AjouteClientController controller = fxmlLoader.getController();
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setClients(carnet); 
 		
@@ -147,7 +149,7 @@ public class CarnetClientController implements ICarnetClient {
 		stage.setScene(scene);
 		this.controller = fxmlLoader.getController();
 		controller.setControl(this);
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setClients(carnet);
 		this.tmp = listview.getSelectionModel().getSelectedItem();
@@ -157,6 +159,10 @@ public class CarnetClientController implements ICarnetClient {
 	@Override
 	public void setScene(Scene scene) {
 		this.scene=scene;
+	}
+	
+	public void setScene2(Scene scene2) {
+		this.scene2=scene2;
 	}
 
 

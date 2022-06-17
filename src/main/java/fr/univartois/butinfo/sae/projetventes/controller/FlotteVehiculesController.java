@@ -69,6 +69,8 @@ public class FlotteVehiculesController implements IFlotteVehicules {
 
 	private Stage stage;
 
+	private Scene scene2;
+
 	@Override
 	public void ajouterVehicule() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/AjouteVehiculeView.fxml"));
@@ -76,7 +78,7 @@ public class FlotteVehiculesController implements IFlotteVehicules {
 		Scene scene = new Scene(viewContent);
 		stage.setScene(scene);
 		AjouteVehiculeController controller = fxmlLoader.getController();
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setFlotteVehicules(flotteVehicules); 
 		controller.init();
@@ -96,7 +98,7 @@ public class FlotteVehiculesController implements IFlotteVehicules {
 		Scene scene = new Scene(viewContent);
 		stage.setScene(scene);
 		AjouteVehiculeController controller = fxmlLoader.getController();
-		controller.setScene(this.scene);
+		controller.setScene(this.scene2);
 		controller.setStage(stage);
 		controller.setFlotteVehicules(flotteVehicules);
 		controller.edit(listview.getSelectionModel().getSelectedItem());
@@ -105,6 +107,10 @@ public class FlotteVehiculesController implements IFlotteVehicules {
 	
 	public void changeScene() {
 		stage.setScene(scene);
+	}
+	
+	public void setScene2(Scene scene2) {
+		this.scene2=scene2;
 	}
 
 	@FXML
@@ -115,7 +121,7 @@ public class FlotteVehiculesController implements IFlotteVehicules {
 	@Override
 	public void setFlotteVehicules(FlotteVehicules flotteVehicules) {
 		this.flotteVehicules=flotteVehicules;
-		//nomflotteVehicules.setText("Flotte véhicule");
+		nomflotteVehicules.setText(flotteVehicules.getNom());
 		listview.setItems(flotteVehicules.getVehicules());
 		listview.getSelectionModel().selectedItemProperty().addListener((p,o,n) -> {
 			prenom.setVisible(true);

@@ -21,4 +21,6 @@ public void ajouterVehicule() throws IOException;
 	public void setStage(Stage stage);
 
 	public void changeScene();
+
+	public void setScene2(Scene scene);
 }

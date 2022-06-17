@@ -19,8 +19,8 @@ public class FlotteVehicules {
 	 * ObservableList de véhicule
 	 */
     private ObservableList<Vehicule> vehicules;
-    
-    /**
+
+	/**
      * nombres de véhicules présent dans la liste.
      */
     private int nbVehicules;
@@ -112,5 +112,20 @@ public class FlotteVehicules {
     		System.out.println(vehicules.get(i).toString());
     	}
     }
+    /**
+     * Getter pour le nom
+     * @ nom
+     */
+    public String getNom() {
+		return nom;
+	}
+
+    /**
+     * Setter pour le nom
+     * @param nom
+     */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
 }

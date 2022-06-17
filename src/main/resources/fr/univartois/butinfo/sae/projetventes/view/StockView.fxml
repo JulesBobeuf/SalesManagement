@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.3445855614973261" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.projetventes.controller.StockController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <ListView fx:id="listview" layoutX="-1.0" layoutY="92.0" prefHeight="306.0" prefWidth="210.0" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="nomStock" alignment="CENTER" layoutX="-211.0" layoutY="23.0" prefHeight="39.0" prefWidth="610.0" text="Label">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="categorie" alignment="CENTER" layoutX="-1.0" layoutY="159.0" prefHeight="18.0" prefWidth="390.0" text="categorie">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="quantite" alignment="CENTER" layoutX="-1.0" layoutY="190.0" prefHeight="18.0" prefWidth="390.0" text="QUANTITE EN STOCK">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="boutonAdd" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onAction="#ajouterArticle" prefHeight="39.0" prefWidth="78.0" text="Ajouter" />
+            <Button fx:id="boutonEdit" layoutX="14.0" layoutY="323.0" mnemonicParsing="false" onAction="#editerArticle" prefHeight="39.0" prefWidth="78.0" text="Editer" />
+            <Button layoutX="147.0" layoutY="323.0" mnemonicParsing="false" onAction="#supprimerArticle" prefHeight="39.0" prefWidth="94.0" text="Supprimer" />
+            <Label fx:id="designation" alignment="CENTER" layoutX="-1.0" layoutY="128.0" prefHeight="22.0" prefWidth="390.0" text="DESIGNATION">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="prix" alignment="CENTER" layoutX="-1.0" layoutY="219.0" prefHeight="18.0" prefWidth="390.0" text="PRIX">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="particularite" alignment="CENTER" layoutX="111.0" layoutY="264.0" prefHeight="22.0" prefWidth="168.0" text="PARTICULARITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="boutonEdit1" layoutX="281.0" layoutY="323.0" mnemonicParsing="false" onAction="#retour" prefHeight="39.0" prefWidth="78.0" text="Retour" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>

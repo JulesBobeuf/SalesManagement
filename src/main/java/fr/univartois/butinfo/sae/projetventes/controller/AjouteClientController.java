@@ -87,13 +87,13 @@ public class AjouteClientController {
     
     public void onEntreprise() {
     	genre.setVisible(false);
-    	prenom.setText("Contact");
+    	prenom.setPromptText("Contact");
     	particulier.setSelected(false);
     }
     
     public void onParticulier() {
     	genre.setVisible(true);
-    	prenom.setText("Prénom");
+    	prenom.setPromptText("Prénom");
     	entreprise.setSelected(false);
     }
     
