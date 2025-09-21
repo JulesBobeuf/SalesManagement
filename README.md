@@ -37,7 +37,7 @@ SalesManagement/
 Ensure you have the following installed:
 
 ```sh
-Java 11+
+Java 17+
 Gradle
 JavaFX SDK
 ```
@@ -66,23 +66,6 @@ cd SalesManagement
 ### Running the Application
 
 After building, the application will launch the main GUI where you can manage products and sales.
-
-## TO DO
-
-- Implement a database for persistent storage  
-- Add user authentication and roles  
-- Improve user interface design  
-- Add reporting and analytics features  
-
-## My Configuration
-
-- **Operating System**: Windows 11  
-- **Java Version**: 11  
-- **IDE**: IntelliJ IDEA / Visual Studio Code  
-
-## IMPORTANT
-
-This project is intended for educational purposes and is not optimized for production use. All data is stored in memory and will be lost when the application closes.
 
 ## Resources
 
