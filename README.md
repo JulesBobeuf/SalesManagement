@@ -1,10 +1,12 @@
-# Sales Management Application
-
-**Sales Management** is a desktop application developed using Java and JavaFX. Created as a university project, this application helps small businesses manage their sales, stock, and transactions without a database system.
+<div align="center">
+  <h1 align="center">Sales Management Application</h1>
+  <img src="assets/readme-sales.png" alt="Sales management app screenshot" width="600">  <p align="center">
+    Our Sales Management Application, built with Java & JavaFX
+</div>
 
 ## About The Project
 
-The application allows users to manage products, sales, and stock levels. It was developed as part of a university course to practice object-oriented programming and desktop application development using JavaFX.
+**Sales Management** is a desktop application developed using Java and JavaFX. Created as a university project, this application helps small businesses manage their sales, stock, and transactions without a database system.
 
 ## Built With
 
